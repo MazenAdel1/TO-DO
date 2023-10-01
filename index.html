@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Todo app</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="tailwind.css" />
+  </head>
+  <body class="min-h-screen font-josefin-sans">
+    <header
+      class="h-[37dvh] bg-[url('./images/bg-desktop-light.jpg')] bg-cover bg-no-repeat dark:bg-[url('./images/bg-desktop-dark.jpg')]"
+    ></header>
+    <section
+      class="h-[63dvh] bg-very-light-grayish-blue dark:bg-very-dark-blue"
+    ></section>
+    <div
+      class="absolute left-1/2 top-1/2 flex min-w-[90%] -translate-x-1/2 -translate-y-1/2 flex-col md:min-w-[700px]"
+    >
+      <div class="flex items-center justify-between pb-10">
+        <h1 class="text-4xl font-bold uppercase tracking-[15px] text-white">
+          Todo
+        </h1>
+        <button id="mode-btn">
+          <img src="./images/icon-moon.svg" alt="moon" />
+        </button>
+      </div>
+
+      <div
+        class="mb-6 flex items-center gap-4 rounded-md bg-white px-5 dark:bg-very-dark-desaturated"
+      >
+        <button
+          class="input-button flex h-6 w-6 items-center justify-center rounded-full border border-very-light-grayish-blue bg-white dark:border-dark-grayish-blue dark:bg-very-dark-desaturated"
+        ></button>
+
+        <input
+          type="text"
+          placeholder="Create a new todo..."
+          class="w-full py-4 outline-none dark:bg-very-dark-desaturated dark:text-light-grayish-blue dark:caret-bright-blue"
+        />
+      </div>
+
+      <div class="flex flex-col drop-shadow-lg dark:drop-shadow-2xl">
+        <div
+          class="tasks-container flex max-h-[308px] flex-col overflow-y-auto scrollbar scrollbar-track-very-light-grayish-blue scrollbar-thumb-slate-900 dark:scrollbar-track-very-dark-blue dark:scrollbar-thumb-zinc-500"
+        ></div>
+        <div
+          class="bottom-side flex hidden items-center justify-between rounded-b-md border-t border-t-light-grayish-blue bg-white p-5 dark:border-t-dark-grayish-blue dark:bg-very-dark-desaturated"
+        >
+          <div class="text-dark-grayish-blue">
+            <span class="items-left">0</span> items left
+          </div>
+          <div class="hidden gap-3 md:flex">
+            <button class="all-button bottom-button font-bold text-bright-blue">
+              All
+            </button>
+            <button
+              class="active-button bottom-button font-bold text-dark-grayish-blue transition hover:text-very-dark-desaturated dark:hover:text-hovered-light-grayish-blue"
+            >
+              Active
+            </button>
+            <button
+              class="completed-button bottom-button font-bold text-dark-grayish-blue transition hover:text-very-dark-desaturated dark:hover:text-hovered-light-grayish-blue"
+            >
+              Completed
+            </button>
+          </div>
+          <button
+            class="clear-button text-dark-grayish-blue hover:text-very-dark-desaturated dark:hover:text-hovered-light-grayish-blue"
+          >
+            Clear Completed
+          </button>
+        </div>
+        <div
+          class="mobile-bottom-side mt-6 flex items-center justify-center gap-5 rounded-md bg-white py-4 dark:bg-very-dark-desaturated md:hidden"
+        >
+          <button class="all-button bottom-button font-bold text-bright-blue">
+            All
+          </button>
+          <button
+            class="active-button bottom-button font-bold text-dark-grayish-blue transition hover:text-very-dark-desaturated dark:hover:text-hovered-light-grayish-blue"
+          >
+            Active
+          </button>
+          <button
+            class="completed-button bottom-button font-bold text-dark-grayish-blue transition hover:text-very-dark-desaturated dark:hover:text-hovered-light-grayish-blue"
+          >
+            Completed
+          </button>
+        </div>
+      </div>
+    </div>
+    <span
+      class="absolute bottom-6 left-1/2 w-full -translate-x-1/2 text-center text-dark-grayish-blue"
+      >Drag and drop to reorder list</span
+    >
+
+    <script src="main.js"></script>
+  </body>
+</html>
