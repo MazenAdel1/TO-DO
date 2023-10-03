@@ -91,16 +91,46 @@ input.addEventListener(`keypress`, (e) => {
   }
 });
 
-// clear everything
+// clear completed tasks
 clearButton.onclick = () => {
-  arrayOfTasks = [];
+  let deleted;
+  for (let i = 0; i < arrayOfTasks.length; i++) {
+    if (arrayOfTasks[i].completed) {
+      if (i == 0) {
+        deleted = arrayOfTasks.splice(0, 1);
+      } else {
+        deleted = arrayOfTasks.splice(i, i);
+      }
+    }
+  }
   localStorage.setItem(`tasks`, JSON.stringify(arrayOfTasks));
 
-  tasksContainer.innerHTML = ``;
-  leftItems.innerHTML = `0`;
+  makePageElements(arrayOfTasks);
 
-  bottomSide.classList.add(`hidden`);
-  mobileBottomSide.classList.add(`hidden`);
+  leftItems.innerHTML = arrayOfTasks.length;
+
+  if (
+    document
+      .querySelectorAll(`.completed-button`)[0]
+      .classList.contains(`text-bright-blue`)
+  ) {
+    document.querySelectorAll(`.completed-button`).forEach((el) => {
+      if (el.classList.contains(`text-bright-blue`)) {
+        el.classList.remove(`text-bright-blue`);
+        el.classList.add(`text-dark-grayish-blue`);
+        el.classList.add(`hover:text-very-dark-desaturated`);
+        el.classList.add(`dark:hover:text-hovered-light-grayish-blue`);
+      }
+    });
+
+    document.querySelectorAll(`.all-button`).forEach((el) => {
+      el.classList.add(`text-bright-blue`);
+      el.classList.remove(`text-dark-grayish-blue`);
+      el.classList.remove(`text-dark-grayish-blue`);
+      el.classList.remove(`hover:text-very-dark-desaturated`);
+      el.classList.remove(`dark:hover:text-hovered-light-grayish-blue`);
+    });
+  }
 };
 //
 
@@ -377,6 +407,7 @@ function completedToggle(elementId) {
 function resetTasks() {
   for (let i = 0; i < arrayOfTasks.length; i++) {
     if (arrayOfTasks[i].completed) {
+      // style the task content
       tasksContainer.children[i].children[0].children[1].classList.toggle(
         `line-through`,
       );
@@ -390,6 +421,7 @@ function resetTasks() {
       tasksContainer.children[i].children[0].children[1].classList.toggle(
         `dark:text-dark-grayish-blue`,
       );
+      //
 
       tasksContainer.children[
         i
@@ -400,6 +432,7 @@ function resetTasks() {
         `dark:bg-very-dark-desaturated`,
       );
 
+      // style the task button
       tasksContainer.children[i].children[0].children[0].classList.toggle(
         `bg-very-light-grayish-blue`,
       );
@@ -409,6 +442,7 @@ function resetTasks() {
       tasksContainer.children[i].children[0].children[0].classList.toggle(
         `bg-gradient-to-br`,
       );
+      //
 
       tasksContainer.children[
         i
