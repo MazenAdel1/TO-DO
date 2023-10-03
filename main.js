@@ -96,11 +96,7 @@ clearButton.onclick = () => {
   let deleted;
   for (let i = 0; i < arrayOfTasks.length; i++) {
     if (arrayOfTasks[i].completed) {
-      if (i == 0) {
-        deleted = arrayOfTasks.splice(0, 1);
-      } else {
-        deleted = arrayOfTasks.splice(i, i);
-      }
+      deleted = arrayOfTasks.splice(i, 1);
     }
   }
   localStorage.setItem(`tasks`, JSON.stringify(arrayOfTasks));
