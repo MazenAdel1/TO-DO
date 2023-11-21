@@ -93,17 +93,18 @@ input.addEventListener(`keypress`, (e) => {
 
 // clear completed tasks
 clearButton.onclick = () => {
-  let deleted;
-  for (let i = 0; i < arrayOfTasks.length; i++) {
-    if (arrayOfTasks[i].completed) {
-      deleted = arrayOfTasks.splice(i, 1);
-    }
-  }
+  arrayOfTasks = arrayOfTasks.filter((task) => task.completed === false);
+
   localStorage.setItem(`tasks`, JSON.stringify(arrayOfTasks));
 
   makePageElements(arrayOfTasks);
 
   leftItems.innerHTML = arrayOfTasks.length;
+
+  if (leftItems.innerHTML == 0) {
+    bottomSide.classList.add(`hidden`);
+    mobileBottomSide.classList.add(`hidden`);
+  }
 
   if (
     document
